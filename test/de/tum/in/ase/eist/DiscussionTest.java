@@ -19,6 +19,7 @@ class DiscussionTest {
 
     @Mock
     private Course courseMock;
+    @Mock
     private Comment commentMock;
 
     @Test
@@ -45,4 +46,11 @@ class DiscussionTest {
 
 
     }
+   // @Test
+    //void  testStartCourseDiscussion(){
+       // Student student = new Student("Emi", "Mano","0","Science", "Computer");
+       // expect(courseMock.isDiscussionAllowed(student)).andReturn(true);
+      //  replay(courseMock);
+
+  //  }
 }
