@@ -33,4 +33,16 @@ class DiscussionTest {
 
 
     }
+    @Test
+    void testCommentIfSavingFails(){
+
+        expect(commentMock.save()).andReturn(false);
+        replay(commentMock);
+        int newSize = discussion.getNumberOfComments() ;
+        discussion.addComment(commentMock);
+        assertEquals(newSize, discussion.getNumberOfComments());
+        verify(commentMock);
+
+
+    }
 }
