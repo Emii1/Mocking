@@ -14,10 +14,14 @@ class DiscussionTest {
 
     // TODO implement the tests
     @TestSubject
-   private final Discussion discussion = new Discussion();
+   private  Discussion discussion;
 
     @Mock
     private Course courseMock;
     private Course commentMock;
 
+    @Test
+    void testComment(){
+
+    }
 }
