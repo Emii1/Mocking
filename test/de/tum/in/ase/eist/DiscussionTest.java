@@ -13,5 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class DiscussionTest {
 
     // TODO implement the tests
+    @TestSubject
+   private Discussion discussion = new Discussion();
+
+    @Mock
+    private Course courseMock;
+    private Course commentMock;
 
 }
