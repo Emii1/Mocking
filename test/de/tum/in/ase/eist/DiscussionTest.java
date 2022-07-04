@@ -1,6 +1,7 @@
 package de.tum.in.ase.eist;
 
 import org.easymock.*;
+import org.easymock.internal.matchers.Null;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -23,7 +24,7 @@ class DiscussionTest {
     private Comment commentMock;
 
     @Test
-    void testComment(){
+    void testComment() {
 
         expect(commentMock.save()).andReturn(true);
         replay(commentMock);
@@ -34,23 +35,28 @@ class DiscussionTest {
 
 
     }
+
     @Test
-    void testCommentIfSavingFails(){
+    void testCommentIfSavingFails() {
 
         expect(commentMock.save()).andReturn(false);
         replay(commentMock);
-        int newSize = discussion.getNumberOfComments() ;
+        int newSize = discussion.getNumberOfComments();
         discussion.addComment(commentMock);
         assertEquals(newSize, discussion.getNumberOfComments());
         verify(commentMock);
 
 
     }
-   // @Test
-    //void  testStartCourseDiscussion(){
-       // Student student = new Student("Emi", "Mano","0","Science", "Computer");
-       // expect(courseMock.isDiscussionAllowed(student)).andReturn(true);
-      //  replay(courseMock);
 
-  //  }
+    @Test
+    void testStartCourseDiscussion() {
+        Student student = new Student("Emi", "Mano", null, "Science", "Computer");
+        expect(courseMock.isDiscussionAllowed(student)).andReturn(true);
+        replay(courseMock);
+        assertTrue(discussion.startCourseDiscussion(courseMock, student, "Eist group meeting"));
+        assertEquals(courseMock, discussion.getCourse());
+        assertEquals("Eist group meeting", discussion.getTopic());
+        verify(courseMock);
+    }
 }
