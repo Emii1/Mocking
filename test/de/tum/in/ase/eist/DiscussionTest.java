@@ -30,7 +30,7 @@ class DiscussionTest {
         expect(commentMock.save()).andReturn(true);
         replay(commentMock);
         discussion.addComment(commentMock);
-        Assertions.assertEquals(newSize, discussion.getNumberOfComments());
+        assertEquals(newSize, discussion.getNumberOfComments());
         verify(commentMock);
 
 
@@ -43,7 +43,7 @@ class DiscussionTest {
         replay(commentMock);
         int newSize = discussion.getNumberOfComments();
         discussion.addComment(commentMock);
-        Assertions.assertEquals(newSize, discussion.getNumberOfComments());
+        assertEquals(newSize, discussion.getNumberOfComments());
         verify(commentMock);
 
 
@@ -54,9 +54,9 @@ class DiscussionTest {
         Student student = new Student("Emi", "Mano", LocalDate.parse("2002-06-09"), "Science", "Computer");
         expect(courseMock.isDiscussionAllowed(student)).andReturn(true);
         replay(courseMock);
-        Assertions.assertTrue(discussion.startCourseDiscussion(courseMock, student, "Eist group meeting"));
-        Assertions.assertEquals(courseMock, discussion.getCourse());
-        Assertions.assertEquals("Eist group meeting", discussion.getTopic());
+        assertTrue(discussion.startCourseDiscussion(courseMock, student, "Eist group meeting"));
+        assertEquals(courseMock, discussion.getCourse());
+        assertEquals("Eist group meeting", discussion.getTopic());
         verify(courseMock);
     }
 }
