@@ -13,15 +13,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class DiscussionTest {
 
     // TODO implement the tests
+
     @TestSubject
-   private  Discussion discussion;
+    private Discussion discussion = new Discussion();
 
     @Mock
     private Course courseMock;
-    private Course commentMock;
+    private Comment commentMock;
 
     @Test
     void testComment(){
+
+        expect(commentMock.save()).andReturn(true);
+        replay(commentMock);
+        int newSize = discussion.getNumberOfComments() + 1;
+        discussion.addComment(commentMock);
+        assertEquals(newSize, discussion.getNumberOfComments());
+        verify(commentMock);
+
 
     }
 }
